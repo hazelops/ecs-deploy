@@ -37,7 +37,7 @@ jobs:
               context: ./
               file: ./Dockerfile
               push: true
-              tags: hazelops/ecs-deploy:latest
+              tags: hazeldeploy/ecs-deploy:${{ steps.docker_build.outputs.digest }}
 
           - name: Image digest
             run: echo ${{ steps.docker_build.outputs.digest }}
