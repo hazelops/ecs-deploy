@@ -33,3 +33,17 @@ jobs:
       - name: Push
         run: |
           docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest
+
+      - name: Collect docker logs
+        uses: jwalton/gh-docker-logs@v1
+        with:
+          dest: './logs'
+
+      - name: Tar logs
+        run: tar cvzf ./logs.tgz ./logs
+
+      - name: Upload logs to GitHub
+        uses: actions/upload-artifact@master
+        with:
+          name: logs.tgz
+          path: ./logs.tgz
