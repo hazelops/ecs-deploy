@@ -42,10 +42,10 @@ jobs:
           - name: Image digest
             run: echo ${{ steps.docker_build.outputs.digest }} > digest.txt
 
-            - uses: actions/upload-artifact@v1
-              with:
-                name: digest
-                path: ./digest.txt
+          - uses: actions/upload-artifact@v1
+            with:
+              name: digest
+              path: ./digest.txt
 
 #
 #
