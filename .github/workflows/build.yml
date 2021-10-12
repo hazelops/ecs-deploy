@@ -3,7 +3,7 @@ defaults:
   run:
     shell: bash
 env:
-  DOCKER_REGISTRY: hazelops
+  DOCKER_REGISTRY: hazeldeploy
   DOCKER_IMAGE_NAME: ecs-deploy
 
 on:
