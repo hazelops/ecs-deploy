@@ -30,10 +30,6 @@ jobs:
         run: |
           docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest .
 
-      - name: Push
-        run: |
-          docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest
-
       - name: Collect docker logs
         uses: jwalton/gh-docker-logs@v1
         with:
@@ -47,3 +43,9 @@ jobs:
         with:
           name: logs.tgz
           path: ./logs.tgz
+
+      - name: Push
+        run: |
+          docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:latest
+
+
