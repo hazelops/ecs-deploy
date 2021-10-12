@@ -37,10 +37,15 @@ jobs:
               context: ./
               file: ./Dockerfile
               push: true
-              tags: hazeldeploy/ecs-deploy:${{ steps.docker_build.outputs.digest }}
+              tags: hazeldeploy/ecs-deploy:latest
 
           - name: Image digest
-            run: echo ${{ steps.docker_build.outputs.digest }}
+            run: echo ${{ steps.docker_build.outputs.digest }} > digest.txt
+
+            - uses: actions/upload-artifact@v1
+              with:
+                name: digest
+                path: ./digest.txt
 
 #
 #
