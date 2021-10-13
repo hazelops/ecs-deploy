@@ -48,6 +48,6 @@ jobs:
               path: ./digest.txt
           - name: Release
             uses: softprops/action-gh-release@v1
-            tag_name: ${{ github.ref }}
             with:
               files: digest.txt
+              tag_name: ${{ github.ref }}
