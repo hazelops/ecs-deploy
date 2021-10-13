@@ -63,10 +63,10 @@ jobs:
             uses: ncipollo/release-action@v1
             with:
               tag: ${{ steps.tag_version.outputs.new_tag }}
+              tag_prefix: "v"
               name: Release ${{ steps.tag_version.outputs.new_tag }} on ${{ steps.time.outputs.time }}
               artifacts: "digest.txt"
               body: |
-                ${{ steps.tag_version.outputs.changelog }}
                 Digest: ${{ steps.docker_build.outputs.digest }}
 
 
