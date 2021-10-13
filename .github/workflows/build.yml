@@ -48,15 +48,16 @@ jobs:
               path: ./digest.txt
 
           - name: Get Time
+            id: time
             uses: nanzm/get-time-action@v1.1
             with:
               timeZone: 8
-              format: 'YYYY-MM-DD-HH-mm-ss'
+              format: 'YYYY-MM-DD-HH-mm'
 
           - uses: marvinpinto/action-automatic-releases@latest
             with:
               repo_token: "${{ secrets.GITHUB_TOKEN }}"
               automatic_release_tag: "latest"
               prerelease: false
-              title: Release at "${{ steps.time.outputs.time }}"
+              title: Release at ${{ steps.time.outputs.time }}
               files: digest.txt
