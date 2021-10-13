@@ -47,18 +47,17 @@ jobs:
               name: digest
               path: ./digest.txt
 
-          - uses: ncipollo/release-action@v1
+          - name: Get Time
+            id: time
+            uses: nanzm/get-time-action@v1.1
+              with:
+              timeZone: 8
+              format: 'YYYY-MM-DD-HH-mm-ss'
+
+          - uses: marvinpinto/action-automatic-releases@latest
             with:
-              name: Release
-              artifacts: "digest.txt"
-              bodyFile: "ecs-deploy@${{ steps.docker_build.outputs.digest }}"
-              token: ${{ secrets.GITHUB_TOKEN }}
-
-
-#          - uses: marvinpinto/action-automatic-releases@latest
-#            with:
-#              repo_token: "${{ secrets.GITHUB_TOKEN }}"
-#              automatic_release_tag: "latest"
-#              prerelease: false
-#              title: ecs-deploy@${{ steps.docker_build.outputs.digest }}
-#              files: digest.txt
+              repo_token: "${{ secrets.GITHUB_TOKEN }}"
+              automatic_release_tag: "latest"
+              prerelease: false
+              title: Release at ${{ steps.time.outputs.time }}
+              files: digest.txt
