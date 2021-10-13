@@ -47,10 +47,10 @@ jobs:
               name: digest
               path: ./digest.txt
 
-         - uses: "marvinpinto/action-automatic-releases@latest"
-           with:
-             repo_token: "${{ secrets.GITHUB_TOKEN }}"
-             automatic_release_tag: "latest"
-             prerelease: false
-             title: ecs-deploy@${{ steps.docker_build.outputs.digest }}
-             files: digest.txt
+          - uses: marvinpinto/action-automatic-releases@latest
+            with:
+              repo_token: "${{ secrets.GITHUB_TOKEN }}"
+              automatic_release_tag: "latest"
+              prerelease: false
+              title: ecs-deploy@${{ steps.docker_build.outputs.digest }}
+              files: digest.txt
