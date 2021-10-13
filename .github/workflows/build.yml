@@ -48,9 +48,8 @@ jobs:
               path: ./digest.txt
 
           - name: Get Time
-            id: time
             uses: nanzm/get-time-action@v1.1
-              with:
+            with:
               timeZone: 8
               format: 'YYYY-MM-DD-HH-mm-ss'
 
