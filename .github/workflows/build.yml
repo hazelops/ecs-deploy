@@ -3,7 +3,7 @@ defaults:
   run:
     shell: bash
 env:
-  DOCKER_REGISTRY: hazeldeploy
+  DOCKER_REGISTRY: hazelops
   DOCKER_IMAGE_NAME: ecs-deploy
 
 on:
@@ -37,7 +37,7 @@ jobs:
               context: ./
               file: ./Dockerfile
               push: true
-              tags: hazeldeploy/ecs-deploy:latest
+              tags: ${{ DOCKER_IMAGE_NAME }}/${{ env.DOCKER_REGISTRY }}:latest
 
           - name: Image digest
             run: echo ${{ steps.docker_build.outputs.digest }} > digest.txt
@@ -51,7 +51,7 @@ jobs:
             id: time
             uses: nanzm/get-time-action@v1.1
             with:
-              timeZone: 8
+              timeZone: 0
               format: 'YYYY-MM-DD'
 
           - name: Bump version and push tag
