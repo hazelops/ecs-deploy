@@ -37,7 +37,7 @@ jobs:
               context: ./
               file: ./Dockerfile
               push: true
-              tags: ${{ DOCKER_IMAGE_NAME }}/${{ env.DOCKER_REGISTRY }}:latest
+              tags: ${{ env.DOCKER_IMAGE_NAME }}/${{ env.DOCKER_REGISTRY }}:latest
 
           - name: Image digest
             run: echo ${{ steps.docker_build.outputs.digest }} > digest.txt
